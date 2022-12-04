@@ -2,10 +2,10 @@ import React from 'react';
 
 const ContactsList = props => {
   console.log(props);
-  //   <ul>
-  //     {contacts.map(el => (
-  //       <li>{el}</li>
-  //     ))}
-  //   </ul>;
+  return (
+    <ul>
+      <li>{props.contacts.name}</li>
+    </ul>
+  );
 };
 export default ContactsList;

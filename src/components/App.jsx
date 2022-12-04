@@ -3,13 +3,20 @@ import Form from './SectionForm/Form';
 import SectionForm from './SectionForm/SectionForm';
 import SectionContacts from './SectionContacts/SectionContacts';
 import ContactList from './SectionContacts/ContactsList';
-// import FeedbackWidget from './FeedbackWidget';
 
 class App extends React.Component {
-  formSubmitHandler = data => {
-    console.log(data);
+  state = {
+    contacts: [],
+    name: '',
   };
-
+  formSubmitHandler = data => {
+    // console.log(data);
+    this.setState({
+      contacts: data,
+    });
+    console.log(this.state);
+    // return data;
+  };
   render() {
     return (
       <>
@@ -17,7 +24,7 @@ class App extends React.Component {
           <Form onSubmit={this.formSubmitHandler} />
         </SectionForm>
         <SectionContacts title="Contacts">
-          {/* <ContactList contacts={this.data} /> */}
+          <ContactList contacts={this.state.contacts} />
         </SectionContacts>
       </>
     );

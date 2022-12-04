@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { nanoid } from 'nanoid';
 class Form extends React.Component {
   state = {
     contacts: [],
@@ -7,20 +7,34 @@ class Form extends React.Component {
   };
 
   handleInputChange = event => {
+    this.setState({ id: nanoid() });
     this.setState({ name: event.currentTarget.value });
-    // console.log(event.currentTarget.value);
   };
 
-  addContacts() {
-    this.setState(this.state.contacts.splice(0, 0, this.state.name));
-  }
+  createUserContact = () => {
+    this.setState(
+      this.state.contacts.splice(0, 0, {
+        id: this.state.id,
+        name: this.state.name,
+      })
+    );
+    // this.setState(this.state.contacts.push({ 2: 1 }));
+    // this.addContactId();
+    // this.setState(prevState => ({
+    //   contacts: [this.state],
+    // }));
+    console.log(this.state);
+  };
 
   handleSubmit = event => {
     event.preventDefault();
-    this.addContacts();
-    this.props.onSubmit(this.state);
-    // this.props.onSubmit(this.state.contacts.push(this.state.name));
-    // console.log(this.state);
+    this.createUserContact();
+    this.props.onSubmit(this.state.contacts[0]);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ contacts: [], name: '', id: '' });
   };
 
   render() {
