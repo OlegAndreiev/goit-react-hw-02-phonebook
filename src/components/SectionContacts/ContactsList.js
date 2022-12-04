@@ -1,11 +1,14 @@
 import React from 'react';
 
-const ContactsList = props => {
-  console.log(props);
-  return (
-    <ul id={props.contacts.id}>
-      <li>{props.contacts.name}</li>
-    </ul>
-  );
-};
+const ContactsList = ({ contacts, onDeleteContact }) => (
+  <ul>
+    {contacts.map(el => (
+      <li key={el.id}>
+        {el.name}:{el.number}
+        <button onClick={() => onDeleteContact(el.id)}>Delete</button>
+      </li>
+    ))}
+  </ul>
+);
+
 export default ContactsList;
