@@ -44,7 +44,16 @@ class App extends React.Component {
     const { filter } = this.state;
     const filteredContacts = this.filteredContacts();
     return (
-      <>
+      <div
+        style={{
+          width: 400,
+          padding: 20,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          borderRadius: 10,
+          backgroundColor: 'white',
+        }}
+      >
         <SectionForm title="Phonebook">
           <Form onSubmit={this.formSubmitHandler} />
         </SectionForm>
@@ -55,7 +64,7 @@ class App extends React.Component {
             onDeleteContact={this.deleteContact}
           />
         </SectionContacts>
-      </>
+      </div>
     );
   }
 }

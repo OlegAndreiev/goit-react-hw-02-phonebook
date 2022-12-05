@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from './SectionContacts.module.css';
+
 const SectionContacts = ({ title, children }) => (
-  <section>
+  <section className={css.section}>
     <h2>{title}</h2>
     {children}
   </section>
